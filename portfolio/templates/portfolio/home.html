@@ -1,0 +1,22 @@
+
+<h1>Home</h1>
+
+<div class="row">
+
+    {% for project in projects %}
+<div class="col">
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description }}</p>
+
+        <img src="{{ project.image.url }}" height=200 width=auto >
+    </div>
+
+    <div class="col">
+        <br>
+        {% if project.url %}
+        <a href="{% url 'all_blogs' %}">Link</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+</div>

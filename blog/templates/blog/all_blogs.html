@@ -1,0 +1,23 @@
+
+{% extends 'base-blog.html' %}
+
+{% block content %}
+<div class="container">
+<h2 class="center">This is the Blog Page</h2>
+<br>
+
+{% for blog in blogs %}
+
+    <h1>{{blog.title}}</h1>
+    <p><em>Description:</em> {{blog.description}} </p>
+    <p> {{blog.pub_date}}</p>
+    <p>{{blog.blog_text}}</p>
+    <img src="{{ blog.image.url }}" height=200 width=auto >
+    <br>
+    <br>
+  
+{% endfor %}
+
+</div>
+{% endblock %}
+
