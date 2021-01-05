@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'hfk@^pr@(lzj*zy)h6+q)+7@3n98fcxtlv6fa08ebh-3hp_cj('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wooflake.pythonanywhere.com']
 
 
 # Application definition
