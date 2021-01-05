@@ -13,4 +13,3 @@ db.sqlite3-journal
 git_notes.txt
 /static
 venv/
-.gitignore
