@@ -9,3 +9,6 @@ class Blog(models.Model):
     image = models.ImageField(upload_to='portfolio/images', blank=True)
     url = models.URLField(blank=True)
     pub_date = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return self.title

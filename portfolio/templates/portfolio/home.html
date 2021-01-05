@@ -1,22 +1,33 @@
 
-<h1>Home</h1>
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>Portfolio Home</h1>
+
+   
+<h3>There are {{ projects.count }} project{{ projects.count|pluralize}}.</h3>
+
+
+<br>
 
 <div class="row">
 
-    {% for project in projects %}
-<div class="col">
-        <h2>{{ project.title }}</h2>
-        <p>{{ project.description }}</p>
-
-        <img src="{{ project.image.url }}" height=200 width=auto >
-    </div>
-
-    <div class="col">
-        <br>
-        {% if project.url %}
-        <a href="{% url 'all_blogs' %}">Link</a>
-        {% endif %}
-    </div>
-    {% endfor %}
-
+        {% for project in projects %}
+        <div class="col">
+            <h2>{{ project.title }}</h2>
+            <p>{{ project.description }}</p>
+            {% if project.image %}
+            <img src="{{ project.image.url }}" height=200 width=auto >
+            {% endif %}
+        </div>
+        {% endfor %}
 </div>
+  <br>
+  <br>
+<h5>Fun Images</h5>
+  <img src="{% static 'newyear.jpg' %}" height=200 width=auto alt="newyear.jpg">
+<img src="{% static 'dogs.jpg' %}" height=200 width=auto  alt="dog.jpg">
+<img src="{% static '300x300-green.jpg'%}" height=200 width=auto alt="green.jpg">
+
+    {% endblock %}

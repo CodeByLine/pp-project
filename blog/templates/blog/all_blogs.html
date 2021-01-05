@@ -1,23 +1,37 @@
-
-{% extends 'base-blog.html' %}
+{% extends 'portfolio/base.html' %}
+{% load static %}
 
 {% block content %}
-<div class="container">
-<h2 class="center">This is the Blog Page</h2>
+
+<h1>The All-Blogs Page</h1>
+<p>Here are a total of {{ blogs.count }} blog{{ blogs.count|pluralize}}</p>
+<h3>Images</h3>
+<img src="{% static 'newyear.jpg' %}" height=200 width=auto alt="newyear.jpg">
+<img src="{% static 'dogs.jpg' %}" alt="dog.jpg" height=200 width=auto>
+<img src="{% static '300x300-green.jpg' %}" alt="dog.jpg" height=200 width=auto>
+<br>
+<br>
+
+<a href="{% static 'How to.pdf' %}" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Link to the PDF File</a>
+
+<button type="button" class="btn btn-primary"><a href="{% static 'How to.pdf' %}"></a>Link to the PDF File</a></button>
+<br>
 <br>
 
 {% for blog in blogs %}
 
-    <h1>{{blog.title}}</h1>
-    <p><em>Description:</em> {{blog.description}} </p>
-    <p> {{blog.pub_date}}</p>
-    <p>{{blog.blog_text}}</p>
-    <img src="{{ blog.image.url }}" height=200 width=auto >
-    <br>
+<a href="{% url 'blog:detail' blog.id %}" style="text-decoration: none;">
+    <h3>{{blog.title}}</h3></a>
+    <em>{{blog.description|safe|truncatechars:100}} </em>
+    <p> {{blog.pub_date}} | {{blog.pub_date|date:'M jS Y'}} | {{blog.pub_date|date:'M d Y'|upper}}</p>
+    <p>{{blog.blog_text|safe}}</p>
+    {% if blog.image %}
+        <img src="{{ blog.image.url }}" height=200 width=auto >
+    {% endif %}
     <br>
   
 {% endfor %}
 
-</div>
+
 {% endblock %}
 

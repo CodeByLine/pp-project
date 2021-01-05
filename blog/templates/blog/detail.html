@@ -1,0 +1,17 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1> Blog</h1>
+{{blog.title}}
+
+<p>{{blog.description|safe}} </p>
+<p> {{blog.pub_date|date:'M jS Y' }}</p>
+
+<p>{{blog.blog_text|safe}}</p>
+{% if blog.image %}
+    <img src="{{ blog.image.url }}" height=200 width=auto >
+{% endif %}
+
+{% endblock %}
