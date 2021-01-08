@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path, PurePath
 
 
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'hfk@^pr@(lzj*zy)h6+q)+7@3n98fcxtlv6fa08ebh-3hp_cj('
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -134,3 +135,6 @@ try:
     from .local_settings import *
 except ImportError:
     print("Looks like no local file. You must be on production.")
+
+from dotenv import load_dotenv
+load_dotenv()
